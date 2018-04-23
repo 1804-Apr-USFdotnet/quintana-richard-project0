@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallenge", "CodeChallenge\CodeChallenge.csproj", "{09491F3E-18C4-4F34-A154-E3115245C88E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeChallengeTest", "UnitTestProject1\CodeChallengeTest.csproj", "{DC2FDB17-0412-4930-A35E-09CDB58FDDAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09491F3E-18C4-4F34-A154-E3115245C88E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09491F3E-18C4-4F34-A154-E3115245C88E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09491F3E-18C4-4F34-A154-E3115245C88E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09491F3E-18C4-4F34-A154-E3115245C88E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2FDB17-0412-4930-A35E-09CDB58FDDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2FDB17-0412-4930-A35E-09CDB58FDDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2FDB17-0412-4930-A35E-09CDB58FDDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2FDB17-0412-4930-A35E-09CDB58FDDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0149970-B4DB-4589-BDA8-FED8EC305D77}
+	EndGlobalSection
+EndGlobal
