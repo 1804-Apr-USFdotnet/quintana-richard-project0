@@ -8,6 +8,7 @@ namespace Library.Interfaces
 {
 	interface IReviews
 	{
+		int Review_Id { get; set; }
 		int Rating { get; set; }
 		string Customer { get; set; }
 	}

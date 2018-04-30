@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace Library.Interfaces
 {
-	interface Interface1
+	interface IRestaurants
 	{
+		int restaurant_id { get; set; }
+		string name { get; set; }
+		string address { get; set; }
+		string city { get; set; }
+		string state { get; set; }
+		string zipcode { get; set; }
 	}
 }

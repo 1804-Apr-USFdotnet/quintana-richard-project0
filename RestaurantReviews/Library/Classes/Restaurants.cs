@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.Classes
 {
-	class Restaurants
+	public class Restaurants
 	{
 		// fields
 		private string _name;
