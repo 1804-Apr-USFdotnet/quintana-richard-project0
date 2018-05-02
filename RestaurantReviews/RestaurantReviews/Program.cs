@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Library.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,13 +28,13 @@ namespace RestaurantReviews
 			var newName = Console.ReadLine();
 
 			var libHelper = new LibraryHelper();
-			libHelper.AddRestaurant(new Restaurant() { Name = newName });
+			libHelper.AddRestaurant(new Library.Classes.Restaurants() { name = newName });
 			// saves changes, updates dbsets
 
-			var results = libHelper.GetRestaurants();
+			var results = libHelper.GetRestaurant();
 			Console.WriteLine("All stored restaurants:");
 			foreach (var restaurant in results)
-				Console.WriteLine(restaurant.Name);
+				Console.WriteLine(restaurant.name);
 
 			Console.ReadKey();
 		}

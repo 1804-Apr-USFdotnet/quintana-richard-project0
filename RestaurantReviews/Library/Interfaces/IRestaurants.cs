@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.Interfaces
+namespace RestaurantReviews.Library.Interfaces
 {
 	interface IRestaurants
 	{
@@ -14,5 +14,6 @@ namespace Library.Interfaces
 		string city { get; set; }
 		string state { get; set; }
 		string zipcode { get; set; }
+		double rating { get; set; }
 	}
 }

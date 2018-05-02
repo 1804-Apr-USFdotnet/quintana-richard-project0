@@ -26,5 +26,12 @@ namespace Library.Classes
 		public int Review_Id { get { return _Review_Id; } set { _Review_Id = value; } }
 		public int Rating { get { return _Rating; } set { _Rating = value; } }
 		public string Customer { get { return _Customer; } set { _Customer = value; } }
+
+		public Reviews()
+		{
+			_Review_Id = 0;
+			_Customer = "";
+			_Rating = 0;
+		}
 	}
 }

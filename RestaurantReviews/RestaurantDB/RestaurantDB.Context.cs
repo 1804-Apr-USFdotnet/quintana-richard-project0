@@ -25,7 +25,7 @@ namespace Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Restaurants> Restaurants { get; set; }
+        public virtual DbSet<Restaurants> Restaurant { get; set; }
         public virtual DbSet<RestaurantReview> RestaurantReviews { get; set; }
         public virtual DbSet<Restaurants1> Restaurants1 { get; set; }
     }

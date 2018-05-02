@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="NLogger, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLogger.dll.1.0.4\lib\NLogger.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -47,10 +50,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Functions.cs" />
     <Compile Include="Classes\LibraryHelper.cs" />
     <Compile Include="Classes\Restaurants.cs" />
     <Compile Include="Classes\Reviews.cs" />
-    <Compile Include="Data\Restaurant.cs" />
+    <Compile Include="Interfaces\IFunctions.cs" />
     <Compile Include="Interfaces\IRestaurants.cs" />
     <Compile Include="Interfaces\IReviews.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +68,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

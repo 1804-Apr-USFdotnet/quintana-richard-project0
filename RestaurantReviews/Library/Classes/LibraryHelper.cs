@@ -9,47 +9,43 @@ namespace Library.Classes
 {
 	public class LibraryHelper
 	{
-		public IEnumerable<Restaurants> GetRestaurants()
+		private RestaurantDBEntities db;
+		public IEnumerable<Restaurants> GetRestaurant()
 		{
 			IEnumerable<Restaurants> result;
-			using (var db = new RestaurantDBEntities())
+			using (db = new RestaurantDBEntities())
 			{
-				var dataList = db.Restaurants.ToList();
+				var dataList = db.Restaurant.ToList();
 				result = dataList.Select(x => DataToLibrary(x)).ToList();
 			}
 			return result;
 		}
 
-		private Restaurants DataToLibrary(Data.Restaurants x)
+		public void AddRestaurant(Restaurants item)
 		{
-			throw new NotImplementedException();
-		}
-
-		public void AddRestaurants(Restaurants item)
-		{
-			using (var db = new RestaurantDBEntities())
+			using (db = new RestaurantDBEntities())
 			{
-				//db.Restaurants.Add(LibraryToData(item));
+				db.Restaurant.Add(LibraryToData(item));
 				db.SaveChanges();
 			}
 		}
 
 		// mapping
 
-		public static Restaurants DataToLibrary(Data.Restaurant dataModel)
+		public static Restaurants DataToLibrary(Data.Restaurants dataModel)
 		{
 			var libModel = new Restaurants()
 			{
-				name = dataModel.Name
+				name = dataModel.names
 			};
 			return libModel;
 		}
 
-		public static Data.Restaurant LibraryToData(Restaurants libModel)
+		public static Data.Restaurants LibraryToData(Restaurants libModel)
 		{
-			var dataModel = new Data.Restaurant()
+			var dataModel = new Data.Restaurants()
 			{
-				Name = libModel.name
+				names = libModel.name
 			};
 			return dataModel;
 		}
