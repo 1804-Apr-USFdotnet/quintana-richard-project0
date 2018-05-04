@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Library.Interfaces
 {
-	interface IReviews
+	public interface IReviews
 	{
+		int Id { get; set; }
 		int Review_Id { get; set; }
 		int Rating { get; set; }
 		string Customer { get; set; }

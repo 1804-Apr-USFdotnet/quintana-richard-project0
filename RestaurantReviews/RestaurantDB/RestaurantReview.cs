@@ -14,8 +14,9 @@ namespace Data
     
     public partial class RestaurantReview
     {
-        public int id { get; set; }
-        public int rating { get; set; }
-        public string customer { get; set; }
-    }
+        public int Id { get; set; }
+        public int Rating { get; set; }
+        public string Customer { get; set; }
+		public int Review_Id { get; set; }
+	}
 }

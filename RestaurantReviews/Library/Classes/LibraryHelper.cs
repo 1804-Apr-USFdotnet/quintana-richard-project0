@@ -13,10 +13,21 @@ namespace Library.Classes
 		public IEnumerable<Restaurants> GetRestaurant()
 		{
 			IEnumerable<Restaurants> result;
-			using (db = new RestaurantDBEntities())
+			using (var db = new RestaurantDBEntities())
 			{
 				var dataList = db.Restaurant.ToList();
 				result = dataList.Select(x => DataToLibrary(x)).ToList();
+			}
+			return result;
+		}
+
+		public IEnumerable<Reviews> GetReviews()
+		{
+			IEnumerable<Reviews> result;
+			using (var db = new RestaurantDBEntities())
+			{
+				var dataList = db.Review.ToList();
+				result = dataList.Select(x => DataToLibraryRev(x)).ToList();
 			}
 			return result;
 		}
@@ -36,7 +47,26 @@ namespace Library.Classes
 		{
 			var libModel = new Restaurants()
 			{
-				name = dataModel.names
+				restaurant_id = dataModel.restaurant_id,
+				names = dataModel.names,
+				address = dataModel.address,
+				city = dataModel.city,
+				state = dataModel.state,
+				zipcode = dataModel.zipcode,
+				style = dataModel.style,
+				avg_rating = dataModel.avg_rating
+			};
+			return libModel;
+		}
+
+		public static Reviews DataToLibraryRev(Data.RestaurantReview dataModel)
+		{
+			var libModel = new Reviews()
+			{
+				Id = dataModel.Id,
+				Rating = dataModel.Rating,
+				Customer = dataModel.Customer,
+				Review_Id = dataModel.Review_Id
 			};
 			return libModel;
 		}
@@ -45,7 +75,7 @@ namespace Library.Classes
 		{
 			var dataModel = new Data.Restaurants()
 			{
-				names = libModel.name
+				names = libModel.names
 			};
 			return dataModel;
 		}

@@ -88,6 +88,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Properties\Serialization.txt" />
     <Content Include="RestaurantDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RestaurantDB.edmx</DependentUpon>

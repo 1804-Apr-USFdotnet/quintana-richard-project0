@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace RestaurantReviews.Library.Interfaces
 {
-	interface IRestaurants
+	public interface IRestaurants
 	{
 		int restaurant_id { get; set; }
-		string name { get; set; }
+		string names { get; set; }
 		string address { get; set; }
 		string city { get; set; }
 		string state { get; set; }
 		string zipcode { get; set; }
-		double rating { get; set; }
+		string style { get; set; }
+		int avg_rating { get; set; }
 	}
 }

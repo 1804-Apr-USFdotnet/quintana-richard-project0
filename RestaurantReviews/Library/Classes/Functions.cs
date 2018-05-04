@@ -5,64 +5,129 @@ using System.Text;
 using System.Threading.Tasks;
 using RestaurantReviews.Library.Interfaces;
 using Data;
+using Library.Classes;
 
 namespace RestaurantReviews.Library.Classes
 {
 	public class Functions : IFunctions
 	{
-		private List<Restaurants> restaurants;
+		LibraryHelper libraryHelper = new LibraryHelper();
 
-
-		//Output all restaurants
-		public List<Restaurants> Restaurants_overall(string arrange = "")
+		public void SearchRestaurant(string NameOfRestaurant)
 		{
-			List<Restaurants> r = new List<Restaurants>();
-			if (arrange != "")
+			var results = libraryHelper.GetRestaurant();
+			foreach (var Restaurants in results)
 			{
-				arrange.ToLower();
-				if (arrange.Contains("ascen"))
-					restaurants.Sort();
-				else
-					restaurants = restaurants.OrderByDescending(x => x.rating).ToList(); 
-				r = restaurants;
-				restaurants = con.GetAllRestaurants();
-				return r;
-			}
-			return restaurants;
-		}
-
-		// Searches for restaurant
-		public Restaurants GetRestaurant(string name_of_restaurant)
-		{ 
-			return RestaurantSearch(name_of_restaurant)[0];
-		}
-
-		public string RestaurantDescribtions(string name_of_restaurant)
-		{
-			var rest = RestaurantSearch(name_of_restaurant)[0];
-
-			return rest.ToString();
-		}
-
-		public List<Restaurants> RestaurantSearch(string search)
-		{
-			List<Restaurants> r = new List<Restaurants>();
-			foreach (var restaurant in restaurants)
-			{
-				if (restaurant.names.Contains(search))
+				if (Restaurants.names.Contains(NameOfRestaurant))
 				{
-					r.Add(restaurant);
+					Console.WriteLine("Restaurant name: " + Restaurants.names);
 				}
 			}
-			return r;
 		}
 
-		// Grab all of the reviews for the selected Restaurant
-		public List<Reviews> Reviews(int restID)
+		public void RestaurantDetails(string NameOfRestaurant)
 		{
-			List<Reviews> reviews = con.GetAllOfRestaurantsReviews(restID);
+			var results = libraryHelper.GetRestaurant();
+			foreach (var Restaurants in results)
+			{
+				if (Restaurants.names == NameOfRestaurant)
+				{
+					Console.WriteLine("Name: " + Restaurants.names + " Address: " + Restaurants.address + " City: " + Restaurants.city + " State: " + Restaurants.state + " Zipcode: " + Restaurants.zipcode + " Rating: " + Restaurants.avg_rating);
+				}
+			}
+		}
 
-			return reviews;
+		public void ShowAll()
+		{
+			var results = libraryHelper.GetRestaurant();
+			foreach (var Restaurants in results)
+				Console.WriteLine(Restaurants.names);
+		}
+
+		public void AllReviews(string NameOfRestaurant)
+		{
+			int restaurantID = 0;
+			var results = libraryHelper.GetRestaurant();
+			var resultsRev = libraryHelper.GetReviews();
+			foreach (var Restaurants in results)
+			{
+				if (Restaurants.names == NameOfRestaurant)
+				{
+					restaurantID = Restaurants.restaurant_id;
+					foreach (var review in resultsRev)
+					{
+						if (review.Review_Id == restaurantID)
+						{
+							Console.WriteLine("Customer: " + review.Customer + " Rating: " + review.Rating);
+						}
+					}
+				}
+			}
+		}
+
+		public void TopThree()
+		{
+			Dictionary<string, double> myDict = new Dictionary<string, double>();
+			var results = libraryHelper.GetRestaurant();
+			foreach (var restaurant in results)
+			{
+				myDict.Add(restaurant.names, AverageRating(restaurant.names));
+			}
+			var sortedDict = from entry in myDict orderby entry.Value ascending select entry;
+
+			Console.WriteLine(sortedDict.ElementAt(sortedDict.Count() - 1) + ", " + sortedDict.ElementAt(sortedDict.Count() - 2) + ", " + sortedDict.ElementAt(sortedDict.Count() - 3));
+		}
+
+		public void GetAverageRating(string NameOfRestaurant)
+		{
+			int restID = 0;
+			int result = 0;
+			double result2 = 0;
+			var results = libraryHelper.GetRestaurant();
+			var resultsRev = libraryHelper.GetReviews();
+			foreach (var restaurant in results)
+			{
+				if (restaurant.names == NameOfRestaurant)
+				{
+					restID = restaurant.restaurant_id;
+					foreach (var review in resultsRev)
+					{
+						if (review.Review_Id == restID)
+						{
+							result += review.Rating;
+						}
+					}
+				}
+			}
+			result2 = (double)result / 3;
+			Console.WriteLine("Average Review: " + result2);
+		}
+
+		// help with getting top 3
+		public double AverageRating(string NameOfRestaurant)
+		{
+			int restID = 0;
+			int result = 0;
+			double result2 = 0;
+			var results = libraryHelper.GetRestaurant();
+			var resultsRev = libraryHelper.GetReviews();
+			foreach (var restaurant in results)
+			{
+				if (restaurant.names == NameOfRestaurant)
+				{
+					restID = restaurant.restaurant_id;
+					foreach (var review in resultsRev)
+					{
+						if (review.Review_Id == restID)
+						{
+							result += review.Rating;
+						}
+					}
+				}
+			}
+			result2 = (double)result / 3;
+			return result2;
 		}
 	}
 }
+
